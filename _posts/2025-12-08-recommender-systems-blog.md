@@ -2,7 +2,7 @@
 layout: post
 title: "Exploring Bias, Radicalization, and Human Choice in AI Recommender Systems"
 date: 2025-12-01
-author: "José Guilherme Loureno Correia Marques dos Santos, Francisco José Gomes da Silva, Mateus Maria Gomes Eça de Queiroz Cabral, Victor Daniel Tóms Rodriguez"
+author: "José Guilherme Loureno Correia Marques dos Santos, Francisco José Gomes da Silva, Mateus Maria Gomes Eça de Queiroz Cabral, Victor Daniel Tomás Rodriguez"
 categories: [Machine Learning, Recommender Systems, AI Ethics]
 tags: [algorithms, bias, radicalization, matrix factorization, regulation, YouTube]
 excerpt: "Recommender systems quietly shape what we watch, read, and listen to. This article explores how these systems can amplify political bias and nudge users toward extremism, combining technical analysis with empirical evidence."
@@ -53,7 +53,7 @@ Several actors shape and are shaped by these algorithms:
 
 ### 2.1 From Click Logs to Latent Factors
 
-At their core, recommender systems predict which items a user is likely to appreciate based on historical interaction patterns. On YouTube, the items are videos; on Netflix, they are movies or series; on Spotify, songs and playlists. A central technical paradigm for this prediction task is **matrix factorization**, which starts from a large user-item interaction matrix **R**, where each entry $r_{ui}$ might represent a rating, a view, or another engagement signal.
+At their core, recommender systems predict which items a user is likely to appreciate based on historical interaction patterns. On YouTube, the items are videos; on Netflix, they are movies or series; on Spotify, songs and playlists. A central technical paradigm for this prediction task is **matrix factorization**, which starts from a large user-item interaction matrix **R**, where each entry represents a rating, a view, or another engagement signal.
 
 Matrix factorization assumes that both users and items can be embedded into a lower-dimensional latent space. Formally, we approximate:
 
@@ -99,9 +99,39 @@ This mapping is obviously stylized but serves as a proxy to observe how an algor
 We train models with the following configuration:
 - **Users**: 50
 - **Movies**: 100
-- **Latent dimension**: $k = 10$
+- **Latent dimension**: k = 10
 - **Simulation rounds**: 5 (for observing drift)
 - **Learning rate**: 0.30
+
+### 2.4 Practical Activity: Interactive Radicalization Index Demo
+
+To make these ideas tangible and engage our audience with the mechanisms of algorithmic bias, we developed an **interactive Streamlit-based demo** that visualizes how recommender systems respond to user interactions and shift recommendation profiles along a political spectrum.
+
+#### Demo Features
+
+The application provides five key interactive capabilities:
+
+1. **3D Latent Space Visualization**: Users and items are visualized in a reduced 3-dimensional latent space, showing how similar items cluster based on their learned representations. This makes abstract concepts like "latent factors" concrete and visible.
+
+2. **Interactive Item Selection**: Users can click on neutral, mildly political, or extreme items and observe in real-time how the model updates the user's latent profile. This demonstrates the mechanism of the feedback loop in action.
+
+3. **Radicalization Index Tracking**: A dynamic metric tracks the proportion of extreme items in the current top-10 recommendations. As users repeatedly interact with extreme content, this index increases, mirroring patterns observed in real YouTube audits.
+
+4. **Algorithm Comparison**: The interface allows switching between different matrix factorization approaches (SVD, PMF, and ALS) to compare how each algorithm responds to identical interaction sequences. This reveals that algorithmic design choices matter—different approaches produce different trajectories.
+
+5. **Recovery Mechanisms**: Users can deliberately consume neutral content and observe whether their recommendation profile rebalances. This exploration reveals an important asymmetry: while radicalization can accelerate quickly, depolarization typically occurs more slowly, reflecting the "stickiness" of extreme content preferences.
+
+#### Key Insights from Simulation
+
+Even in this simplified toy world, three critical patterns emerge:
+
+- **Rapid Drift**: Repeated selection of extreme items gradually increases the radicalization index. The latent vector shifts toward the extreme region of the space, pulling all future recommendations with it.
+
+- **Asymmetric Recovery**: Neutral interactions can pull the index back down, but typically more slowly than the radicalization process. This mirrors patterns observed in real YouTube audits, where moving users away from problematic content proves more difficult than the initial attraction.
+
+- **Algorithmic Amplification**: The algorithm does not create extreme content consumption; rather, it amplifies and accelerates it. Users must first encounter extreme material for the algorithm to reinforce its presence, but once they do, the system makes that material increasingly prominent.
+
+These observations underscore a fundamental insight: **recommendation algorithms are not autonomous agents but rather efficiency mechanisms**. They make visible and actionable what users might seek on their own, but in doing so, they amplify the consequences of individual choices across millions of users.
 
 ---
 
@@ -239,27 +269,27 @@ Recommender systems will remain central to digital life. The question is not whe
 
 [1] Haroon, M., Wojcieszak, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z. (2023). "Auditing YouTube's recommendation system for ideologically congenial, extreme, and problematic recommendations." *Proceedings of the National Academy of Sciences*, 120(50).
 
-[2] CS8 Project Proposal (2025). "Exploring Bias, Radicalization, and Human Choice in AI Recommender Systems."
+[2] Haroon, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z., Wojcieszak, M. (2022). "YouTube, The Great Radicalizer? Auditing and mitigating ideological biases in YouTube recommendations." *arXiv*, 2203.10666.
 
-[3] Haroon, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z., Wojcieszak, M. (2022). "YouTube, The Great Radicalizer? Auditing and mitigating ideological biases in YouTube recommendations." *arXiv*, 2203.10666.
+[3] Whittaker, J. (2022). "Recommendation Algorithms and Extremist Content: A Review of Empirical Evidence." GIFCT Transparency Working Group.
 
-[4] Whittaker, J. (2022). "Recommendation Algorithms and Extremist Content: A Review of Empirical Evidence." GIFCT Transparency Working Group.
+[4] Hosseinmardi, H., Ghasemian, A., Rivera-Lanas, M., Ribeiro, M. H., West, R., Watts, D. J. (2023). "Causally estimating the effect of YouTube's recommender system using counterfactual bots." *Proceedings of the National Academy of Sciences*.
 
-[5] Hosseinmardi, H., Ghasemian, A., Rivera-Lanas, M., Ribeiro, M. H., West, R., Watts, D. J. (2023). "Causally estimating the effect of YouTube's recommender system using counterfactual bots." *Proceedings of the National Academy of Sciences*.
+[5] Koren, Y., Bell, R., Volinsky, C. (2009). "Matrix factorization techniques for recommender systems." *IEEE Computer*, 42(8), 30–37.
 
-[6] Koren, Y., Bell, R., Volinsky, C. (2009). "Matrix factorization techniques for recommender systems." *IEEE Computer*, 42(8), 30–37.
+[6] Raza, S., et al. (2024). "A Comprehensive Review of Recommender Systems." *arXiv*.
 
-[7] Raza, S., et al. (2024). "A Comprehensive Review of Recommender Systems." *arXiv*.
-
-[8] Tufekçi, Z. (2018). "YouTube, The Great Radicalizer." *The New York Times*.
+[7] Tufekçi, Z. (2018). "YouTube, The Great Radicalizer." *The New York Times*.
 
 ---
 
 ## About This Article
 
-This article is part of the "Artificial Intelligence and Society" course at Faculdade de Ciências and Faculdade de Engenharia, Universidade do Porto. It represents a collaborative analysis of how recommendation algorithms shape information ecosystems and explores pathways toward more equitable and transparent algorithmic governance.
+This article is part of the "Artificial Intelligence and Society" master's course at Faculdade de Ciências and Faculdade de Engenharia, Universidade do Porto. It addresses the course's central theme: *"The Myth of Algorithmic Neutrality"—exploring how algorithmic decision-making is haunted by human biases, cultural assumptions, and structural inequalities embedded in code and data*.
 
-**Interactive Demonstration**: An interactive Streamlit application accompanying this research is available at [your-streamlit-app-url]. The application allows users to explore matrix factorization dynamics and visualize how algorithmic recommendations shift as users interact with content across the ideological spectrum.
+Our case study examines YouTube's recommender system as a socio-technical infrastructure where algorithmic design, platform incentives, and user behaviour co-produce information environments. The work combines empirical audit findings with technical simulation to demonstrate that **neutrality is not an emergent property of algorithms, but a choice that platforms make—or decline to make**.
+
+**Interactive Demonstration**: An interactive Streamlit application accompanying this research is deployed to allow exploration of matrix factorization dynamics in real-time. The application enables users to simulate how algorithmic recommendations shift as users interact with content across the ideological spectrum, providing hands-on engagement with the mechanisms discussed theoretically in this article.
 
 ---
 
