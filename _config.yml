@@ -1,0 +1,4 @@
+title: "IAS Blog"
+description: "Master's blog on AI and society"
+theme: minima          # or another GitHub Pages–supported theme
+permalink: /:year/:month/:day/:title/
