@@ -105,7 +105,10 @@ We train models with the following configuration:
 
 ### 2.4 Practical Activity: Interactive Radicalization Index Demo
 
-To make these ideas tangible and engage our audience with the mechanisms of algorithmic bias, we developed an **interactive Streamlit-based demo** that visualizes how recommender systems respond to user interactions and shift recommendation profiles along a political spectrum.
+To make these ideas tangible and engage our audience with the mechanisms of algorithmic bias, we developed an **interactive Streamlit-based demo**, available at  
+[SVD Recommendation System · Streamlit](https://app-recommender-demo-jmes3suofb6rlwktepdkss.streamlit.app/).  
+It visualizes how recommender systems respond to user interactions and shift recommendation profiles along a political spectrum.
+
 
 #### Demo Features
 
