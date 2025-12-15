@@ -294,12 +294,12 @@ In all three techniques (SVD, ALS, and PMF), the underlying goal is to minimize 
 
 | **Method** | **Estimation** | **Latent Space Representation** | **Strengths** | **Limitations** | **Estimation Strategy** | **Regularization** | **Scalability** |
 |------------|----------------|---------------------------------|---------------|-----------------|-------------------------|---------------------|-----------------|
-| **SVD**    | Classical decomposition (dense matrix) | \( U_f \Sigma_f^{1/2} \) and \( V_f \Sigma_f^{1/2} \) | Optimal low-rank approximation; simple | Not suitable for sparse data; requires imputation/adaptation | Global optimization via matrix factorization (best fit for entire matrix) | Regularization in latent factors via imputation/SVD++ | Expensive for large, sparse datasets (need for adaptation) |
-| **ALS**   | Alternating regularized least squares | Rows of \( U \) and \( V \) are points in latent space | Scalable; parallelizable; handles implicit feedback | Sensitive to hyperparameters; less statistically grounded | Local optimization (alternating between user/item factorization) | Explicit regularization in the objective function | Highly scalable and parallelizable, efficient for sparse data |
-| **PMF**   | Probabilistic posterior maximization | Posterior means of \( p_u \) and \( q_i \) define latent space | Principled regularization; models uncertainty | Computationally heavier; requires careful tuning | Probabilistic modeling of ratings with Gaussian priors | Regularization via Gaussian priors on latent factors | Slower than ALS due to probabilistic model complexity, but parallelizable |
-
+| **SVD**    | Classical decomposition (dense matrix) | $U_f \Sigma_f^{1/2}$ and $V_f \Sigma_f^{1/2}$ | Optimal low-rank approximation; simple | Not suitable for sparse data; requires imputation/adaptation | Global optimization via matrix factorization (best fit for entire matrix) | Regularization in latent factors via imputation/SVD++ | Expensive for large, sparse datasets (need for adaptation) |
+| **ALS**    | Alternating regularized least squares | Rows of $U$ and $V$ are points in latent space | Scalable; parallelizable; handles implicit feedback | Sensitive to hyperparameters; less statistically grounded | Local optimization (alternating between user/item factorization) | Explicit regularization in the objective function | Highly scalable and parallelizable, efficient for sparse data |
+| **PMF**    | Probabilistic posterior maximization | Posterior means of $p_u$ and $q_i$ define latent space | Principled regularization; models uncertainty | Computationally heavier; requires careful tuning | Probabilistic modeling of ratings with Gaussian priors | Regularization via Gaussian priors on latent factors | Slower than ALS due to probabilistic model complexity, but parallelizable |
 
 ---
+
 
 ## 2.2 Design Choices That Create Feedback Loops
 
