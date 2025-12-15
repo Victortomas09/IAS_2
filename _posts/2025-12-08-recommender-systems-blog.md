@@ -153,7 +153,7 @@ $$
 R \approx U V^T
 $$
 
-where \(U \in \mathbb{R}^{m \times f}\) contains user latent factors and \(V \in \mathbb{R}^{n \times f}\) contains item latent factors. Each user \(u\) is associated with a vector \(p_u\) and each item \(i\) with a vector \(q_i\), and the predicted interaction is given by:
+where $U \in \mathbb{R}^{m \times f}$ contains user latent factors and $V \in \mathbb{R}^{n \times f}$ contains item latent factors. Each user $u$ is associated with a vector $p_u$ and each item $i$ with a vector $q_i$, and the predicted interaction is given by:
 
 $$
 \hat{r}_{ui} = p_u^T q_i
@@ -185,7 +185,7 @@ $$
 R = U \Sigma V^T
 $$
 
-where \(\Sigma\) is a diagonal matrix of singular values. 
+where $\Sigma$ is a diagonal matrix of singular values.
 
 Truncating to the top \(f\) singular values yields the rank-\(f\) approximation:
 
@@ -193,7 +193,7 @@ $$
 R_f = U_f \Sigma_f V_f^T
 $$
 
-This produces a latent-space embedding: the rows of \(U_f \Sigma_f^{1/2}\) represent users and the rows of \(V_f \Sigma_f^{1/2}\) represent items in the same \(f\)-dimensional space. 
+This produces a latent-space embedding: the rows of $U_f \Sigma_f^{1/2}$ represent users and the rows of $V_f \Sigma_f^{1/2}$ represent items in the same $f$-dimensional space.
 
 Proximity in this space reflects similarity in preferences.  
 
@@ -209,7 +209,7 @@ $$
 \min_{U,V} \sum_{(u,i)\in \kappa} (r_{ui} - p_u^T q_i)^2 + \lambda (\|p_u\|^2 + \|q_i\|^2)
 $$
 
-where \(\kappa\) denotes known interactions. 
+where $\kappa$ denotes known interactions.
 
 ALS alternates between solving for all user vectors \(p_u\) while fixing item vectors, and vice versa. 
 
@@ -249,25 +249,27 @@ In the context of matrix factorization techniques (such as SVD, ALS, or PMF), th
 
 The **Mean Squared Error (MSE)** is one of the most common metrics for evaluating the performance of a model. It measures the average of the squared differences between the actual (true) ratings and the predicted ratings. Lower MSE values indicate better model performance.
 
-\[
-MSE = \frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2
-\]
+$$
+\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2
+$$
+
 Where:
-- \( N \) is the total number of observed ratings.
-- \( r_{ij} \) is the actual rating of user \( i \) for movie \( j \).
-- \( \hat{r}_{ij} \) is the predicted rating for user \( i \) for movie \( j \).
+- $N$ is the total number of observed ratings.
+- $r_{ij}$ is the actual rating of user $i$ for movie $j$.
+- $\hat{r}_{ij}$ is the predicted rating for user $i$ for movie $j$.
 
 1. Identify the set of ratings that are actually available in the dataset (non-missing or non-NaN).
-2. Compute the squared error for each observed rating: \((r_{ij} - \hat{r}_{ij})^2\).
+2. Compute the squared error for each observed rating: $(r_{ij} - \hat{r}_{ij})^2$.
 3. Take the average of all the squared errors for the observed ratings.
 
 ##### 2. Root Mean Squared Error (RMSE)
 
 The **Root Mean Squared Error (RMSE)** is a more interpretable metric because it has the same units as the original ratings (compared to MSE, which is in squared units). RMSE is the square root of the MSE, and it gives an indication of the typical magnitude of the error in the predicted ratings.
 
-\[
-RMSE = \sqrt{MSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2}
-\]
+$$
+\mathrm{RMSE} = \sqrt{\mathrm{MSE}} =
+\sqrt{\frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2}
+$$
 
 Where:
 - \( MSE \) is the mean squared error (from the equation above).
