@@ -187,7 +187,7 @@ $$
 
 where $\Sigma$ is a diagonal matrix of singular values.
 
-Truncating to the top $f$ singular values yields the rank- $f$ approximation:
+Truncating to the top $f$ singular values yields the rank-$f$ approximation:
 
 $$
 R_f = U_f \Sigma_f V_f^T
