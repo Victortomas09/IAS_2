@@ -2,7 +2,7 @@
 layout: post
 title: "Exploring Bias, Radicalization, and Human Choice in AI Recommender Systems"
 date: 2025-12-01
-author: "José Guilherme Loureno Correia Marques dos Santos, Francisco José Gomes da Silva, Mateus Maria Gomes Eça de Queiroz Cabral, Victor Daniel Tomás Rodriguez"
+author: "Francisco José Gomes da Silva, José Guilherme Loureno Correia Marques dos Santos, Mateus Maria Gomes Eça de Queiroz Cabral, Victor Daniel Tomás Rodriguez"
 categories: [Machine Learning, Recommender Systems, AI Ethics]
 tags: [algorithms, bias, radicalization, matrix factorization, regulation, YouTube]
 excerpt: "Recommender systems quietly shape what we watch, read, and listen to. This article explores how these systems can amplify political bias and nudge users toward extremism, combining technical analysis with empirical evidence."
@@ -10,7 +10,13 @@ excerpt: "Recommender systems quietly shape what we watch, read, and listen to. 
 
 ## Abstract
 
-Recommender systems quietly shape what we watch, read, and listen to. On platforms like YouTube, they decide which video auto-plays next and which topics follow us across sessions. This article explores how these systems, particularly YouTube's recommendation algorithm, can amplify political bias and even nudge users toward more extreme content. Combining a matrix-factorization-based simulation with recent empirical audits and counterfactual studies, we argue that recommendation algorithms are not neutral tools but design artefacts that reflect business incentives, data biases, and societal power structures. We conclude by discussing how regulation, technical design choices, and informed user behaviour can work together to steer these systems toward more democratic outcomes.
+Recommender systems quietly shape what we watch, read, and listen to. On platforms like YouTube, they decide which video auto-plays next and which topics follow us across sessions. 
+
+This article explores how these systems, particularly YouTube's recommendation algorithm, can amplify political bias and even nudge users toward more extreme content. 
+
+Combining a matrix-factorization-based simulation with recent empirical audits and counterfactual studies, we argue that recommendation algorithms are not neutral tools but design artefacts that reflect business incentives, data biases, and societal power structures. 
+
+We conclude by discussing how regulation, technical design choices, and informed user behaviour can work together to steer these systems toward more democratic outcomes.
 
 ---
 
@@ -18,22 +24,73 @@ Recommender systems quietly shape what we watch, read, and listen to. On platfor
 
 ### 1.1 A Polarized World Curated by Algorithms
 
-Artificial intelligence recommender systems have fundamentally transformed how individuals discover and consume information. YouTube, the most popular video platform globally, is a prime example. With around 81% of the U.S. population using the platform and about 70% of watch time driven by algorithmic recommendations, YouTube's recommender has become one of the most influential information gatekeepers in contemporary society.
+Artificial intelligence recommender systems have fundamentally transformed how individuals discover and consume information. 
 
-This power operates in a context of deep political polarization. The gap between left and right on key issues has widened, hostility between partisan groups has increased, and support for political violence is not negligible. Social media and recommendation algorithms are regularly accused of locking users into filter bubbles and leading them down rabbit holes of increasingly ideological or conspiratorial content. YouTube, in particular, has been labelled "the great radicalizer," a platform whose algorithmic logic allegedly pushes users from mainstream content toward increasingly extreme material.
+YouTube, the most popular video platform globally, is a prime example. With around 81% of the U.S. population using the platform and about 70% of watch time driven by algorithmic recommendations, YouTube's recommender has become one of the most influential information gatekeepers in contemporary society.
+
+This power operates in a context of deep political polarization. The gap between left and right on key issues has widened, hostility between partisan groups has increased, and support for political violence is not negligible. 
+
+Social media and recommendation algorithms are regularly accused of locking users into filter bubbles and leading them down rabbit holes of increasingly ideological or conspiratorial content. 
+
+YouTube, in particular, has been labelled "the great radicalizer," a platform whose algorithmic logic allegedly pushes users from mainstream content toward increasingly extreme material [[1]](https://www.niemanlab.org/reading/youtube-the-great-radicalizer/), [[2]](https://www.nytimes.com/interactive/2019/06/08/technology/youtube-radical.html)
+
+---
 
 ### 1.2 The Core Question: Are Algorithms Driving Radicalization?
 
-At the heart of the debate lies a deceptively simple question: do recommendation algorithms systematically direct users toward extreme, conspiratorial, or otherwise problematic content?
+At the heart of the debate lies a deceptively simple question: **do recommendation algorithms systematically direct users toward extreme, conspiratorial, or otherwise problematic content?**
 
 Answering this requires unpacking what we call the **loop effect**, a feedback cycle with four interacting components:
 
-1. **Selective exposure**: Users tend to consume information that matches their pre-existing views.
-2. **Homophily**: Social networks, online and offline, are biased toward like-minded connections.
-3. **Filter bubbles**: Personalization algorithms learn from this biased behaviour and recommend more of the same.
-4. **Feedback**: As users follow these recommendations, their future options and sometimes their beliefs become more homogeneous.
+#### Understanding the Loop Effect in Recommendation Algorithms
 
-Empirically, the picture is complex. Large-scale audits report that YouTube's algorithm favours ideologically congenial content and that this effect is especially strong for right-leaning users. More recent counterfactual studies, however, suggest that after major algorithmic changes in 2019, user preferences may play a larger role than algorithmic bias, with recommendations sometimes moderating rather than radicalizing viewing behaviour. Reality lies somewhere in between: algorithm and user co-produce the information environment.
+At the center of current debates on digital media lies a central question: do recommendation algorithms actively steer users toward more extreme, conspiratorial, or otherwise harmful content?
+
+Addressing this issue requires understanding the **loop effect**, a self-reinforcing cycle generated by the interaction of user behaviour, social networks, and algorithmic design with four interacting components:
+
+<p align="center">
+  <img src="images/loop.png" alt="Loop Effect Diagram" width="400"><br>
+  <b>Fig. 1.</b> The Loop Effect – from <a href="https://arxiv.org/abs/2203.10666">[4] Haroon et al, 2022</a>
+</p>
+
+1. **Selective exposure:** Users tend to consume information that matches their pre-existing views.  
+The first component, selective exposure, reflects users’ propensity to engage with information that confirms their existing beliefs. Although the degree of intentional “seeking out” like-minded content is contested, individuals consistently show a higher likelihood of consuming ideologically aligned material, which can heighten polarization and increase hostility toward political out-groups.
+
+
+2. **Homophily:** Social networks, online and offline, are biased toward like-minded connections.  
+Homophily adds a second layer to this dynamic. Social networks form predominantly among individuals with similar socio-demographic characteristics, behaviours, and political orientations. On social media, users disproportionately follow and exchange information with ideologically similar others. These homophilous networks act as filters that narrow exposure to diverse viewpoints, intensifying the effects of selective exposure. While most people do not inhabit political echo chambers, a smaller and highly engaged subset does, and its behaviour disproportionately shapes the online information environment.
+
+
+3. **Filter bubbles:** Personalization algorithms learn from this biased behaviour and recommend more of the same.  
+A third factor, the filter bubble, arises from the design choices underpinning recommendation algorithms. To maximize engagement, these systems personalize content based on users’ prior activity and the behaviour of similar users in their networks. Over time, the system internalizes an increasingly narrow picture of a user’s interests, leading to recommendations that mirror and sometimes amplify past engagement patterns. For certain users, this can significantly tighten the ideological boundaries of the content they encounter.
+
+
+4. **Feedback:** As users follow these recommendations, their future options and sometimes their beliefs become more homogeneous.  
+
+
+##### The Self-Loop (Loop Effect)
+
+These components converge in what we call the **self-loop** or **loop effect**. 
+This mechanism operates as a closed, iterative cycle:
+
+1. Users initially choose content aligned with their beliefs.  
+2. Their homophilous networks reinforce that exposure by circulating similar material.  
+3. The algorithm learns from this interaction history and delivers even more ideologically consistent content.  
+4. Users engage with these new recommendations, feeding the cycle once again.
+
+Each iteration strengthens the signals the system uses to predict future engagement, gradually narrowing the informational environment. The loop effect therefore embodies a compounding process in which user behaviour and algorithmic outputs become mutually reinforcing, increasing the likelihood of ideological homogeneity and reducing exposure to diverse viewpoints.
+
+#### Empirical Evidence
+
+
+Empirical studies show that this process is nuanced 
+Earlier audits found that platforms like YouTube systematically amplified ideologically congenial content, especially for right-leaning users.[[3]](https://doi.org/10.1073/pnas.2213020120).
+
+More recent counterfactual analyses [[6]](https://doi.org/10.1073/pnas.2313377121), however, indicate that after major algorithmic adjustments in 2019, user preferences may play a more decisive role than algorithmic bias alone.  
+
+The most accurate interpretation is thus a hybrid one: **the trajectory of online radicalization is shaped not by algorithms or users independently, but by their continuous co-production within this self-reinforcing loop.**
+
+---
 
 ### 1.3 Key Stakeholders in This Ecosystem
 
@@ -53,60 +110,439 @@ Several actors shape and are shaped by these algorithms:
 
 ### 2.1 From Click Logs to Latent Factors
 
-At their core, recommender systems predict which items a user is likely to appreciate based on historical interaction patterns. On YouTube, the items are videos; on Netflix, they are movies or series; on Spotify, songs and playlists. A central technical paradigm for this prediction task is **matrix factorization**, which starts from a large user-item interaction matrix **R**, where each entry represents a rating, a view, or another engagement signal.
+Recommender systems predict which items a user is likely to engage with by exploiting patterns in historical interactions. 
 
-Matrix factorization assumes that both users and items can be embedded into a lower-dimensional latent space. Formally, we approximate:
+On platforms such as YouTube, Netflix, and Spotify, these interactions—views, clicks, dwell time, ratings, or other engagement signals, are represented in a sparse user–item matrix \(R\), where most entries are unobserved.  
 
-$$R \approx UV^T$$
+**The central modelling task is to predict which unobserved entries are likely to be high, thereby generating personalized recommendations.**
 
-where **U** is a matrix of user latent factors and **V** is a matrix of item latent factors. The dot product between a user's and an item's latent vectors approximates the strength of their interaction.
+#### 2.1.1 Recommender System Strategies
 
-On platforms like YouTube, this idea is instantiated across several surfaces:
-- **Homepage recommendations**: What users see when they open the site
-- **Up-next recommendations**: What auto-plays after the current video
-- **Search-based suggestions**: Results tailored to user history
+Broadly speaking, recommender systems operate through one of two core strategies: **content-based filtering** or **collaborative filtering**.[[7]](https://ieeexplore.ieee.org/document/5197422)
 
-Each surface can use slightly different models or weighting strategies.
+**Content-based methods** rely on descriptive attributes of items and users—such as genre, cast, or demographic traits—to identify suitable matches. They perform well even when dealing with new users or items, but depend on extensive metadata and careful feature construction.
 
-### 2.2 Design Choices That Create Feedback Loops
+**Collaborative filtering** follows a different logic by drawing exclusively on historical user–item interactions, such as ratings or viewing behaviour. By identifying patterns shared across many users, it infers underlying preferences without requiring explicit item descriptions. Although often more accurate and broadly applicable than content-based approaches, collaborative filtering is limited when little interaction data are available, making it vulnerable to the *cold-start* problem.
 
-YouTube's recommender reflects a set of optimisation choices:
+Within collaborative filtering, two principal methodological families exist:
 
-1. **Objective function**: Engagement metrics such as watch time, click-through rate, and session length are primary targets.
-2. **Personalization**: Models are trained on each user's history and the behaviour of similar users.
-3. **Heterogeneous surfaces**: Homepage and up-next recommendations are tuned differently, with homepage often being more strongly personalized.
+-  ##### Neighborhood Methods #####  
+    Focus on explicit similarity relationships either between users or between items:
 
-Combined, these choices create the loop effect. If a user repeatedly watches content from a particular political leaning, the model updates that user's latent vector towards that region of the space and increases the score of similarly positioned videos. Over time, the user's local neighbourhood in latent space can become ideologically homogeneous, even if the global catalogue is diverse.
+    - User-oriented approaches: The system predicts a user’s preference by identifying like-minded users who have rated similar items. 
 
-### 2.3 Our Simulation: Matrix Factorization in a Political Toy World
+    - Item-oriented approaches: The system examines which items tend to receive similar ratings from the same users; recommendations are then derived from the nearest “neighbor” items a user has already interacted with.  
 
-To make these dynamics concrete, our project implements a recommender simulation based on the MovieLens 100K dataset. While MovieLens is about movies, not politics, it provides a clean, well-understood environment to prototype algorithms.
+    *Example:* If a user has rated several war or Spielberg films highly, a neighborhood method might infer a preference for *Saving Private Ryan*  by observing that these films cluster together in terms of user ratings.
 
-#### Dataset and Political Mapping
+- ##### Latent Factor Models
+    Latent factor models attempt to explain rating behaviour through a set of underlying dimensions—often between 20 and 100—learned directly from patterns in the data. Instead of relying on explicit similarity, these models embed both users and items in a latent space where each factor captures an abstract aspect of taste or content.  
 
-The original dataset contains 100,000 interactions over 31 attributes. For experimentation, we select a subset of 50 users and 100 movies, including a focal user with ID 196. We then map 19 movie genres into three political categories:
+    For movies, latent factors might represent distinctions such as comedy versus drama, action intensity, or family orientation, but can also capture subtle or non-interpretable dimensions.  
+    A user’s predicted rating emerges from the alignment (typically via dot product) between the user’s and the item’s positions in this latent space.
 
-| Category | Genres | Count |
-|---|---|---|
-| **Neutral** | Comedy, Animation, Children's, Musical, Drama, Romance, Sci-Fi, Fantasy, Documentary, Unknown | 10 |
-| **Mildly Political** | Action, Adventure, Thriller, Crime, Mystery | 5 |
-| **Extreme** | War, Film-Noir, Horror | 3 |
+---
 
-This mapping is obviously stylized but serves as a proxy to observe how an algorithm shifts a user's recommendations along a neutral–extreme axis.
+#### 2.1.2 Matrix Factorization
 
-#### Simulation Parameters
+Matrix factorization is one of the most successful implementations of latent factor models. It represents both users and items as vectors in a shared factor space, with strong alignment indicating a high predicted preference. It assumes that both users and items can be embedded in a shared low-dimensional latent space.
 
-We train models with the following configuration:
-- **Users**: 50
-- **Movies**: 100
-- **Latent dimension**: k = 10
-- **Simulation rounds**: 5 (for observing drift)
-- **Learning rate**: 0.30
+In its basic form, the interaction matrix is approximated as:
 
-### 2.4 Practical Activity: Interactive Radicalization Index Demo
+$$
+R \approx U V^T
+$$
 
-To make these ideas tangible and engage our audience with the mechanisms of algorithmic bias, we developed an **interactive Streamlit-based demo**, available at  
+where \(U \in \mathbb{R}^{m \times f}\) contains user latent factors and \(V \in \mathbb{R}^{n \times f}\) contains item latent factors. Each user \(u\) is associated with a vector \(p_u\) and each item \(i\) with a vector \(q_i\), and the predicted interaction is given by:
+
+$$
+\hat{r}_{ui} = p_u^T q_i
+$$
+
+The latent dimensions capture underlying characteristics—such as taste, mood, genre, or political orientation—that may not be explicitly annotated but can be inferred from collective behaviour.  
+
+The latent space representation provides a **geometric perspective**: users and items are points in an \(f\)-dimensional space, and the dot product of their vectors approximates user–item affinity. Items positioned closely along certain dimensions share latent properties, while users are located near items matching their preferences.
+
+---
+
+#### 2.1.3 Matrix Factorization Algorithms
+
+Several algorithms implement matrix factorization for collaborative filtering, differing in estimation strategy, regularization, and computational scalability. 
+
+In this project, we employ  three different matrix factorization techniques/algorithms:
+
+- **Singular Value Decomposition (SVD)**
+- **Alternating Least Squares (ALS)**
+- **Probabilistic Matrix Factorization (PMF)**.
+
+---
+
+##### Singular Value Decomposition (SVD)
+
+SVD decomposes a fully observed matrix into orthogonal components:
+
+$$
+R = U \Sigma V^T
+$$
+
+where \(\Sigma\) is a diagonal matrix of singular values. 
+
+Truncating to the top \(f\) singular values yields the rank-\(f\) approximation:
+
+$$
+R_f = U_f \Sigma_f V_f^T
+$$
+
+This produces a latent-space embedding: the rows of \(U_f \Sigma_f^{1/2}\) represent users and the rows of \(V_f \Sigma_f^{1/2}\) represent items in the same \(f\)-dimensional space. 
+
+Proximity in this space reflects similarity in preferences.  
+
+Classical SVD requires dense matrices and is unsuitable for sparse recommender data without adaptations such as **SVD++** or imputation.
+
+---
+
+##### Alternating Least Squares (ALS)
+
+ALS fits the factorization model directly on observed ratings by minimizing a regularized least squares objective:
+
+$$
+\min_{U,V} \sum_{(u,i)\in \kappa} (r_{ui} - p_u^T q_i)^2 + \lambda (\|p_u\|^2 + \|q_i\|^2)
+$$
+
+where \(\kappa\) denotes known interactions. 
+
+ALS alternates between solving for all user vectors \(p_u\) while fixing item vectors, and vice versa. 
+
+After convergence, \(U\) and \(V\) form the latent space representation: each row corresponds to a user or item in an \(f\)-dimensional space, and distances and directions capture similarity patterns.  
+
+ALS is highly scalable, parallelizable, and well-suited to sparse data or implicit feedback.
+
+---
+
+##### Probabilistic Matrix Factorization (PMF)
+
+PMF models observed ratings probabilistically:
+
+$$
+r_{ui} = p_u^T q_i + \epsilon_{ui}, \quad \epsilon_{ui} \sim \mathcal{N}(0, \sigma^2)
+$$
+
+with Gaussian priors on latent factors:
+
+$$
+p_u \sim \mathcal{N}(0, \sigma_p^2 I), \quad q_i \sim \mathcal{N}(0, \sigma_q^2 I)
+$$
+
+Maximizing the posterior corresponds to minimizing the regularized squared error, similar to ALS, but with a probabilistic interpretation.
+
+The latent space is defined by the learned posterior means of \(p_u\) and \(q_i\). 
+
+PMF naturally supports uncertainty estimation and can be extended to Bayesian formulations.
+
+---
+
+#### Performance Evaluation (RMSE and MSE)
+
+In the context of matrix factorization techniques (such as SVD, ALS, or PMF), the performance of the model can be evaluated using prediction error metrics like **Mean Squared Error (MSE)** and **Root Mean Squared Error (RMSE)**. These metrics quantify how well the model's predicted ratings match the actual ratings in the dataset, focusing on the observed ratings (those that are available in the dataset).
+
+##### 1. Mean Squared Error (MSE)
+
+The **Mean Squared Error (MSE)** is one of the most common metrics for evaluating the performance of a model. It measures the average of the squared differences between the actual (true) ratings and the predicted ratings. Lower MSE values indicate better model performance.
+
+\[
+MSE = \frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2
+\]
+Where:
+- \( N \) is the total number of observed ratings.
+- \( r_{ij} \) is the actual rating of user \( i \) for movie \( j \).
+- \( \hat{r}_{ij} \) is the predicted rating for user \( i \) for movie \( j \).
+
+1. Identify the set of ratings that are actually available in the dataset (non-missing or non-NaN).
+2. Compute the squared error for each observed rating: \((r_{ij} - \hat{r}_{ij})^2\).
+3. Take the average of all the squared errors for the observed ratings.
+
+##### 2. Root Mean Squared Error (RMSE)
+
+The **Root Mean Squared Error (RMSE)** is a more interpretable metric because it has the same units as the original ratings (compared to MSE, which is in squared units). RMSE is the square root of the MSE, and it gives an indication of the typical magnitude of the error in the predicted ratings.
+
+\[
+RMSE = \sqrt{MSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (r_{ij} - \hat{r}_{ij})^2}
+\]
+
+Where:
+- \( MSE \) is the mean squared error (from the equation above).
+
+1. Compute the MSE using the observed ratings (just like the MSE calculation).
+2. Take the square root of the resulting MSE value.
+
+##### Comparison of ALS, SVD, and PMF in Terms of MSE and RMSE
+
+- **SVD** uses a deterministic factorization and generally minimizes the Frobenius norm of the difference between the actual and predicted ratings, leading to a low MSE and RMSE. It works well when the data is relatively dense or when using a small subset of users and items.
+
+- **ALS** is an iterative optimization method that solves for user and item latent factors alternately. Like SVD, it minimizes the squared error for observed ratings, but the alternating optimization makes it more scalable for large datasets, particularly when the data is sparse.
+
+- **PMF** takes a probabilistic approach, which can be more robust in situations where noise or uncertainty is significant. Like SVD and ALS, it minimizes the squared error (through a log-likelihood approach), but the probabilistic formulation can lead to better generalization in sparse datasets, as it incorporates uncertainty in the model’s predictions.
+
+
+In all three techniques (SVD, ALS, and PMF), the underlying goal is to minimize the **MSE** or **RMSE** by approximating the original rating matrix \( R \) with the product of latent factors. All three methods are designed to produce low MSE and RMSE, which ultimately means better recommendations by more accurately predicting ratings for unseen items.
+
+---
+
+**Matrix Factorization Techniques Comparison**
+
+| **Method** | **Estimation** | **Latent Space Representation** | **Strengths** | **Limitations** | **Estimation Strategy** | **Regularization** | **Scalability** |
+|------------|----------------|---------------------------------|---------------|-----------------|-------------------------|---------------------|-----------------|
+| **SVD**    | Classical decomposition (dense matrix) | \( U_f \Sigma_f^{1/2} \) and \( V_f \Sigma_f^{1/2} \) | Optimal low-rank approximation; simple | Not suitable for sparse data; requires imputation/adaptation | Global optimization via matrix factorization (best fit for entire matrix) | Regularization in latent factors via imputation/SVD++ | Expensive for large, sparse datasets (need for adaptation) |
+| **ALS**   | Alternating regularized least squares | Rows of \( U \) and \( V \) are points in latent space | Scalable; parallelizable; handles implicit feedback | Sensitive to hyperparameters; less statistically grounded | Local optimization (alternating between user/item factorization) | Explicit regularization in the objective function | Highly scalable and parallelizable, efficient for sparse data |
+| **PMF**   | Probabilistic posterior maximization | Posterior means of \( p_u \) and \( q_i \) define latent space | Principled regularization; models uncertainty | Computationally heavier; requires careful tuning | Probabilistic modeling of ratings with Gaussian priors | Regularization via Gaussian priors on latent factors | Slower than ALS due to probabilistic model complexity, but parallelizable |
+
+
+---
+
+## 2.2 Design Choices That Create Feedback Loops
+
+Recommendation algorithms do not operate in isolation; their design choices interact with user behaviour and social structure to create feedback loops.
+
+
+#### 2.2.1 Objective Functions and Personalization
+
+Recommenders optimize engagement metrics such as watch time, clicks, or session length. 
+
+In latent factor models, this corresponds to adjusting vectors so that:
+
+$$
+\hat{r}_{ui} = p_u^T q_i
+$$
+
+aligns with observed interactions.  
+
+High-engagement items — often those that align with users’ existing preferences — receive stronger latent factor weights, making them more likely to appear in recommendations.
+
+Personalization leverages the latent space: users near similar items or other users receive similar recommendations. 
+
+Over time, repeated engagement strengthens these local clusters.
+
+---
+
+#### 2.2.2 Heterogeneous Recommendation Surfaces
+
+Platforms often use multiple recommendation surfaces, each applying different weighting strategies:
+
+- **Homepage:** mixes popular and personalized content.  
+
+- **Up-next / Auto-play:** emphasizes immediate engagement, reinforcing narrow sequences of content.  
+
+- **Search-based:** personalized by query history but still influenced by latent proximity.  
+
+Even with identical factor matrices, these surfaces produce different reinforcement dynamics in latent space.
+
+---
+
+#### 2.2.3 Interaction with Latent Space
+
+The latent space provides a geometric interpretation of feedback dynamics:
+
+- **Item clustering:** items with similar latent vectors cluster along shared dimensions.  
+- **User drift:** users’ vectors shift toward clusters corresponding to consumed content.  
+- **Neighborhood contraction:** recommendations concentrate around local clusters, narrowing exposure to diverse content.  
+
+In the simulation, this structure allows us to observe how collaborative filtering in latent space reproduces concentration of recommendations and homophily-driven alignment along ideological axes.
+
+This combination of selective exposure, homophily, and latent-space-based personalization forms the **self-loop mechanism**: each interaction iteratively strengthens the latent-space alignment between users and ideologically similar items.
+
+Empirical audits of large platforms like YouTube show that such loops can increase the prevalence of extreme or highly partisan content for a subset of users, even though global exposure remains diverse.[[5]](https://gifct.org/wp-content/uploads/2022/07/GIFCT-22WG-TR-Empirical-1.1.pdf)
+
+Across all methods, the latent space allows geometric reasoning about users and items:
+
+- **Items:** Points whose positions encode combinations of latent traits. Items close together in this space share similar characteristics.  
+- **Users:** Points encoding preferences along the same latent axes. Users near an item vector are predicted to engage with that item.  
+- **Dot product:** Interaction strength is approximated by the inner product of user and item vectors. High alignment indicates high predicted preference.
+
+This representation is central for the project: it provides a structured way to simulate recommendation dynamics, capture homophily, and analyze how personalization can concentrate exposure around specific political orientations, reproducing the feedback loop mechanisms observed on platforms like YouTube.
+
+---
+
+#### 2.2.4 Implications for Simulation
+
+By embedding users and items into a latent factor space using SVD, ALS, or PMF, our simulation can reproduce these dynamics. The latent vectors allow the model to:
+
+- Track how users’ positions evolve in response to repeated exposure to content clusters.  
+- Examine how local neighborhoods in latent space shrink or shift over time.  
+- Quantify the impact of algorithmic design choices (e.g., weighting functions, personalization strength) on the concentration of recommendations.  
+
+In this framework, the latent space is not merely a mathematical abstraction; it is a tool for modeling how collaborative filtering interacts with social behaviour to generate feedback loops, providing insight into the mechanisms by which recommender systems may amplify ideological homogeneity.
+
+---
+
+## 2.3 Our Simulation: Matrix Factorization in a Political Toy World
+
+To make these ideas tangible and engage our audience with the mechanisms of algorithmic bias, we developed an **interactive Streamlit-based demo**
+
+This project adopts collaborative filtering through matrix decomposition and latent-space modelling because these methods offer a powerful framework for analyzing how recommender systems may reinforce ideological tendencies. 
+
+By extracting latent dimensions of taste and item similarity directly from behavioural data, matrix factorization exposes how user interactions can structure the recommendation landscape. 
+
+In our simulation, this latent representation illustrates how mechanisms such as **selective exposure and homophily can gradually concentrate recommendations around specific political orientations**, mirroring dynamics observed on large-scale platforms like YouTube.
+
+---
+
+#### 2.3.1 Dataset and Political Mapping
+
+To make these dynamics concrete, our project implements a recommender simulation based on the **MovieLens 100K dataset**. 
+
+Although using a YouTube dataset might seem ideal, full user interaction data is not publicly accessible due to privacy restrictions. 
+
+Moreover, such datasets are extremely large and require extensive preprocessing. 
+
+Using **MovieLens 100K** allows the team to simulate different user personalities and interactions, making it easier to demonstrate the effects of algorithmic bias and feedback loops in an educational and interpretable setting.
+
+The **MovieLens 100K** dataset is a widely used benchmark for developing and evaluating recommender systems. 
+
+It contains exactly **100,000 explicit user–item interactions**, where **943 users** rate **1,682 movies** on a discrete 1–5 scale. 
+
+In addition to the ratings themselves, the dataset provides a compact set of auxiliary attributes—such as timestamps, basic demographic indicators for users, and metadata for movies—amounting to roughly 31 fields depending on the variant used and the preprocessing applied.
+
+A distinctive feature of **MovieLens** is its structured representation of movie genres. 
+
+Each film is assigned one or more genre labels from a predefined set, encoded as binary indicator variables. 
+
+For this project, these genre labels provide a bridge between the nonpolitical nature of the dataset and the political dynamics we aim to simulate. 
+
+By mapping each genre to a corresponding political intensity category, we construct an interpretable proxy for ideological content. 
+
+The mapping is defined as follows:
+
+- **Neutral genres:** Comedy, Animation, Children’s, Musical, Drama, Romance, Sci-Fi, Fantasy, Documentary, Unknown  
+These categories generally reflect lighthearted, family-oriented, informational, or escapist themes that do not carry inherent political connotations.
+
+- **Mildly political genres:** Action, Adventure, Thriller, Crime, Mystery, Action-Adventure/Other  
+These genres commonly involve conflict, societal tension, moral dilemmas, or adversarial framing, making them suitable as proxies for low-intensity political content.
+
+- **Extreme genres:** War, Film-Noir, Horror  
+These categories are characterized by depictions of violence, existential conflict, ideological narratives, or psychologically intense themes. They serve as analogues for high-intensity or polarizing political content.
+
+This mapping is obviously stylized but serves as a proxy to observe how an algorithm shifts a user’s recommendations along a neutral–extreme axis.
+
+Although **MovieLens** itself contains no political material, this genre-to-intensity mapping enables the modeling of user preferences along a synthetic ideological axis. 
+
+By assigning each film a political “load” based on its genres, and by simulating users with differing appetites for neutral, mildly political, or extreme content, the dataset becomes a controlled environment in which to study how collaborative filtering, matrix factorization, and feedback mechanisms can distort, amplify, or homogenize exposure patterns.
+
+Using **MovieLens** in this way provides a clean and interpretable test bed for analyzing algorithmic bias and reinforcement dynamics without the noise, opacity, or confounding factors of real political platforms.
+
+#### 2.3.2 Application Overview
+
+In the Streamlit application which is designed for exploring and simulating a movie recommendation system using matrix factorization techniques such as **SVD**, **ALS**, and **PMF**, users can view and interact with movie data, make predictions using latent models, simulate the evolution of their preferences over time, and visualize results in 3D latent spaces.  
+
+The main sections are organized into **three functional tabs.**
+
+
+##### Tabs and Features
+
+ 1. **Data Tab**
+     - **Display Original Dataset**: View the original MovieLens dataset with user, movie, and rating information.
+     - **Category Mapping**: Shows a mapping of movie genres to political categories (e.g., neutral, mildly political, extreme).
+     - **User-Item Matrix**: Visualize the ratings matrix for users and movies, highlighting how sparse the data is and showing how movies are rated by users.
+     - **Category Distribution**: Displays a bar chart of the category distribution in the full dataset as well as for the filtered data based on the selected users and movies.
+
+    <div style="display: flex; justify-content: space-between;">
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab1.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 2.</b> Application Layout - Data Tab
+      </div>
+
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab1_user_item.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 3.</b> Data Tab: The User-Item Matrix
+      </div>
+    </div>
+
+ 2. **Recommendations Tab**
+     - **Matrix Factorization**: Apply matrix factorization methods (SVD, ALS, PMF) to decompose the rating matrix and generate recommendations.
+     - **Latent Factor Visualization**: Display the user and movie latent factor matrices obtained after performing matrix factorization.
+     - **Predicted Ratings**: Show the predicted ratings for unrated movies based on the selected latent model.
+     - **Prediction Error Metrics**: Display RMSE (Root Mean Squared Error) and MSE (Mean Squared Error) to assess the performance of the recommendations.
+     - **Top-20 Recommendations**: Display the top-20 recommended movies for the selected user and show their category distribution (neutral, mildly political, extreme).
+     - **3D Latent Space Visualization**: Visualize the latent space in 3D, showing the relative positions of movies and the user, as well as top-20 recommendations in relation to the user's preferences.
+
+    <div style="display: flex; justify-content: space-between;">
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab2_matrix_fact.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 4.</b> Recommendation Tab - Matrix Factorization
+      </div>
+
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab2_Reconstructed_matrix.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 5.</b> Recommendation Tab - Predictions Matrix
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab2_user_recomm.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 6.</b> Recommendation Tab - Top 20 - User Recommendations
+      </div>
+
+      <div style="text-align: left; width: 48%;">
+        <img src="images/tab2_user_latent_space.png" alt="Data Tab" width="100%"><br>
+        <b>Fig. 7.</b> Recommendation Tab - 3D Latent Space Visualization 
+      </div>
+    </div>
+
+
+ 3. **Simulation Tab**
+     - **Latent Drift Simulation**: Simulate how a user's preferences drift over time as they interact with different movies. This feature tracks and visualizes the evolution of the user's latent vector and their changing preferences.
+     - **Interactive Movie Selection**: Users can interact with the top-10 recommended movies. Each click updates the user’s preferences in the latent space by simulating a shift toward the selected movie's latent representation.
+     - **Recovery Action**: Simulate watching a "neutral" movie to revert the user’s preferences toward neutrality (a balancing action).
+     - **Trajectory Visualization**: Track and visualize the user’s trajectory in the latent space as they interact with movies. This shows how the user’s preferences evolve over time.
+     - **UMAP Projection**: Use UMAP to visualize the user’s latent drift and movie clusters in a reduced 3D space, helping to explore the overall structure of movie preferences.
+     - **Radicalization Index**: Compute and display a Radicalization Index based on the political categories of the top-10 recommended movies. It shows how the recommendations are distributed across categories like "neutral," "mildly political," and "extreme."
+      - **Category Distribution in Recommendations**: A bar chart showing the distribution of categories (neutral, mildly political, extreme) in the top-10 recommendations.
+      - **Category-Biased KNN Graph**: Visualizes a K-nearest neighbor (KNN) graph of movies with respect to their latent factors, highlighting how the top-10 recommended movies relate to each other and the user's trajectory. The graph considers movie categories (neutral, political, extreme) to enhance the visualization of movie similarities.
+
+---
+
+##### Simulation Parameters
+
+The sidebar allows users to define how many users and movies are included in the simulation, choose the matrix factorization method (SVD, ALS, or PMF), and select the number of latent factors and learning rate for simulations.  
+Latent factors are a key parameter for controlling the quality and specificity of the recommendations. The simulation learning rate controls how much the user preferences change during the simulation.  
+Users can select a user for recommendations and simulation from the available subset, making it possible to simulate personalized recommendations.  
+The dynamic calculation of the number of latent factors ensures that users only select feasible numbers of latent factors, based on the chosen subset of users and movies.
+
+In the sidebar, users can control the following simulation parameters to customize the recommendation process and preference simulation:
+
+1. **Number of Users to Include:**
+   - **Control**: Slider to select how many users to include in the subset.
+   - **Range**: From 5 to the total number of unique users in the dataset. Default: 50.
+
+2. **Number of Movies to Include:**
+   - **Control**: Slider to select how many movies to include in the subset.
+   - **Range**: From 10 to the total number of unique movies in the dataset. Default: 200.
+
+3. **Select User for Recommendations:**
+   - **Control**: Dropdown menu to select the user for whom to generate movie recommendations and simulate interaction.
+   - **Range**: Based on the subset of users chosen via the number of users slider.
+
+4. **Recommendation Method / Latent Model:**
+   - **Control**: Dropdown menu to select the matrix factorization method for generating recommendations.
+   - **Options**: SVD, ALS, PMF.
+   - **Default**: SVD.
+
+5. **Latent Factors:**
+   - **Control**: Slider to select the number of latent factors (dimensions) used in the matrix factorization model. This controls the dimensionality of the latent space representation.
+   - **Range**: Based on the selected method and data. The slider dynamically adjusts the max number of latent factors  depending on the number of users and movies.
+   - **Default**: A value that is dynamically set based on the data and method.
+
+6. **Simulation Learning Rate:**
+   - **Control**: Slider to adjust the learning rate for preference drift simulations. A higher learning rate means the user's preferences will evolve more quickly.
+   - **Range**: From 0.05 to 0.5. Default: 0.3.
+
+
+## 2.4 Practical Activity: Interactive Radicalization Index Demo
+
+The  **Interactive Streamlit-based demo**, is available at  
+
 [SVD Recommendation System · Streamlit](https://app-recommender-demo-jmes3suofb6rlwktepdkss.streamlit.app/).  
+
 It visualizes how recommender systems respond to user interactions and shift recommendation profiles along a political spectrum.
 
 
@@ -270,19 +706,25 @@ Recommender systems will remain central to digital life. The question is not whe
 
 ## References
 
-[1] Haroon, M., Wojcieszak, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z. (2023). "Auditing YouTube's recommendation system for ideologically congenial, extreme, and problematic recommendations." *Proceedings of the National Academy of Sciences*, 120(50).
+[1] Tufekçi, Z. (2018). *YouTube, The Great Radicalizer.* **The New York Times**. Available at: [https://www.niemanlab.org/reading/youtube-the-great-radicalizer/](https://www.niemanlab.org/reading/youtube-the-great-radicalizer/)
 
-[2] Haroon, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z., Wojcieszak, M. (2022). "YouTube, The Great Radicalizer? Auditing and mitigating ideological biases in YouTube recommendations." *arXiv*, 2203.10666.
+[2] Rose, Kevin (2019). *The Making of a YouTube Radical*,**The New York Times**, [https://www.nytimes.com/interactive/2019/06/08/technology/youtube-radical.html](https://www.nytimes.com/interactive/2019/06/08/technology/youtube-radical.html)
 
-[3] Whittaker, J. (2022). "Recommendation Algorithms and Extremist Content: A Review of Empirical Evidence." GIFCT Transparency Working Group.
 
-[4] Hosseinmardi, H., Ghasemian, A., Rivera-Lanas, M., Ribeiro, M. H., West, R., Watts, D. J. (2023). "Causally estimating the effect of YouTube's recommender system using counterfactual bots." *Proceedings of the National Academy of Sciences*.
+[3] Haroon, M., Wojcieszak, M., Chhabra, A., Liu, X., Mohapatra, P., & Shafiq, Z. (2023). *Auditing YouTube’s recommendation system for ideologically congenial, extreme, and problematic recommendations.* **Proceedings of the National Academy of Sciences**, 120(50). DOI: [https://doi.org/10.1073/pnas.2213020120](https://doi.org/10.1073/pnas.2213020120)
 
-[5] Koren, Y., Bell, R., Volinsky, C. (2009). "Matrix factorization techniques for recommender systems." *IEEE Computer*, 42(8), 30–37.
+[4] Haroon, M., Chhabra, A., Liu, X., Mohapatra, P., Shafiq, Z., & Wojcieszak, M. (2022). *YouTube, The Great Radicalizer? Auditing and mitigating ideological biases in YouTube recommendations.* **arXiv**, 2203.10666. Available at: [https://arxiv.org/abs/2203.10666](https://arxiv.org/abs/2203.10666)
 
-[6] Raza, S., et al. (2024). "A Comprehensive Review of Recommender Systems." *arXiv*.
+[5] Whittaker, J. (2022). *Recommendation Algorithms and Extremist Content: A Review of Empirical Evidence.* **GIFCT Transparency Working Group**. PDF: [https://gifct.org/wp-content/uploads/2022/07/GIFCT-22WG-TR-Empirical-1.1.pdf](https://gifct.org/wp-content/uploads/2022/07/GIFCT-22WG-TR-Empirical-1.1.pdf)
 
-[7] Tufekçi, Z. (2018). "YouTube, The Great Radicalizer." *The New York Times*.
+[6] Hosseinmardi, H., Ghasemian, A., Rivera‐Lanas, M., Ribeiro, M. H., West, R., & Watts, D. J. (2024). *Causally estimating the effect of YouTube’s recommender system using counterfactual bots.* **Proceedings of the National Academy of Sciences**, 121(8), e2313377121. DOI: [https://doi.org/10.1073/pnas.2313377121](https://doi.org/10.1073/pnas.2313377121)
+
+[7] Koren, Y., Bell, R., & Volinsky, C. (2009). *Matrix factorization techniques for recommender systems.* **IEEE Computer**, 42(8), 30–37. Available at: [https://ieeexplore.ieee.org/document/5197422](https://ieeexplore.ieee.org/document/5197422)
+
+[8] Raza, S., et al. (2024). *A Comprehensive Review of Recommender Systems.* arXiv. Available at: [https://doi.org/10.48550/arXiv.2407.13699](https://doi.org/10.48550/arXiv.2407.13699)
+
+
+
 
 ---
 
