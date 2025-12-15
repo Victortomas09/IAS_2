@@ -112,7 +112,7 @@ Several actors shape and are shaped by these algorithms:
 
 Recommender systems predict which items a user is likely to engage with by exploiting patterns in historical interactions. 
 
-On platforms such as YouTube, Netflix, and Spotify, these interactions—views, clicks, dwell time, ratings, or other engagement signals, are represented in a sparse user–item matrix \(R\), where most entries are unobserved.  
+On platforms such as YouTube, Netflix, and Spotify, these interactions—views, clicks, dwell time, ratings, or other engagement signals, are represented in a sparse user–item matrix $R$, where most entries are unobserved.  
 
 **The central modelling task is to predict which unobserved entries are likely to be high, thereby generating personalized recommendations.**
 
@@ -161,7 +161,7 @@ $$
 
 The latent dimensions capture underlying characteristics—such as taste, mood, genre, or political orientation—that may not be explicitly annotated but can be inferred from collective behaviour.  
 
-The latent space representation provides a **geometric perspective**: users and items are points in an \(f\)-dimensional space, and the dot product of their vectors approximates user–item affinity. Items positioned closely along certain dimensions share latent properties, while users are located near items matching their preferences.
+The latent space representation provides a **geometric perspective**: users and items are points in an $f$-dimensional space, and the dot product of their vectors approximates user–item affinity. Items positioned closely along certain dimensions share latent properties, while users are located near items matching their preferences.
 
 ---
 
@@ -187,7 +187,7 @@ $$
 
 where $\Sigma$ is a diagonal matrix of singular values.
 
-Truncating to the top \(f\) singular values yields the rank-\(f\) approximation:
+Truncating to the top $f$ singular values yields the rank-$f$ approximation:
 
 $$
 R_f = U_f \Sigma_f V_f^T
@@ -211,9 +211,9 @@ $$
 
 where $\kappa$ denotes known interactions.
 
-ALS alternates between solving for all user vectors \(p_u\) while fixing item vectors, and vice versa. 
+ALS alternates between solving for all user vectors $p_u$ while fixing item vectors, and vice versa. 
 
-After convergence, \(U\) and \(V\) form the latent space representation: each row corresponds to a user or item in an \(f\)-dimensional space, and distances and directions capture similarity patterns.  
+After convergence, $U$ and $V$ form the latent space representation: each row corresponds to a user or item in an $f$-dimensional space, and distances and directions capture similarity patterns.  
 
 ALS is highly scalable, parallelizable, and well-suited to sparse data or implicit feedback.
 
@@ -235,7 +235,7 @@ $$
 
 Maximizing the posterior corresponds to minimizing the regularized squared error, similar to ALS, but with a probabilistic interpretation.
 
-The latent space is defined by the learned posterior means of \(p_u\) and \(q_i\). 
+The latent space is defined by the learned posterior means of $p_u$ and $q_i$. 
 
 PMF naturally supports uncertainty estimation and can be extended to Bayesian formulations.
 
@@ -272,7 +272,7 @@ $$
 $$
 
 Where:
-- \( MSE \) is the mean squared error (from the equation above).
+- $\mathrm{MSE}$ is the mean squared error (from the equation above).
 
 1. Compute the MSE using the observed ratings (just like the MSE calculation).
 2. Take the square root of the resulting MSE value.
@@ -286,7 +286,7 @@ Where:
 - **PMF** takes a probabilistic approach, which can be more robust in situations where noise or uncertainty is significant. Like SVD and ALS, it minimizes the squared error (through a log-likelihood approach), but the probabilistic formulation can lead to better generalization in sparse datasets, as it incorporates uncertainty in the model’s predictions.
 
 
-In all three techniques (SVD, ALS, and PMF), the underlying goal is to minimize the **MSE** or **RMSE** by approximating the original rating matrix \( R \) with the product of latent factors. All three methods are designed to produce low MSE and RMSE, which ultimately means better recommendations by more accurately predicting ratings for unseen items.
+In all three techniques (SVD, ALS, and PMF), the underlying goal is to minimize the **MSE** or **RMSE** by approximating the original rating matrix $R$ with the product of latent factors. All three methods are designed to produce low MSE and RMSE, which ultimately means better recommendations by more accurately predicting ratings for unseen items.
 
 ---
 
