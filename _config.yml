@@ -1,8 +1,7 @@
 title: "IAS Blog"
 description: "Master's blog on AI and society"
-theme: minima          # or another GitHub Pages–supported theme
+theme: jekyll-theme-minimal  # You can choose a theme or create your own layout
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
+  input: GFM
