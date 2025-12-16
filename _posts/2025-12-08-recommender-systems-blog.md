@@ -645,7 +645,7 @@ The EU’s **Digital Services Act (DSA)** is the most relevant regulatory framew
 
 #### 4.2.1 DSA Article 27 – Recommender system transparency
 
-Under **Article 27**, platforms that use recommender systems must explain, in plain and intelligible language, the main parameters driving recommendations and the options users have to modify or influence those parameters.[[10]] In practice, “main parameters” should not be a vague statement like “we personalize content”; it should help users understand what the system is optimizing and what signals matter.
+Under **Article 27**, platforms that use recommender systems must explain, in plain and intelligible language, the main parameters driving recommendations and the options users have to modify or influence those parameters.[[10]](https://www.eu-digital-services-act.com/Digital_Services_Act_Article_27.html) In practice, “main parameters” should not be a vague statement like “we personalize content”; it should help users understand what the system is optimizing and what signals matter.
 
 Examples of “main parameters” that are meaningful in a video platform context include:
 
@@ -656,19 +656,19 @@ Examples of “main parameters” that are meaningful in a video platform contex
 
 #### 4.2.2 DSA Article 38 – Recommender systems
 
-For VLOPs (and very large search engines), the DSA goes further. Article 38 requires at least one option for each recommender system that is not based on profiling (as defined in the GDPR).[[11]] Also, providing a non-profiling option is not only a back-end requirement; it has a UX dimension. The DSA also prohibits manipulative interface design (“dark patterns”) that would materially distort users’ ability to make free and informed choices. So, offering a non-profiling option but hiding it deep in settings can run counter to the spirit of compliance.
+For VLOPs (and very large search engines), the DSA goes further. Article 38 requires at least one option for each recommender system that is not based on profiling (as defined in the GDPR).[[11]](https://www.eu-digital-services-act.com/Digital_Services_Act_Article_38.html) Also, providing a non-profiling option is not only a back-end requirement; it has a UX dimension. The DSA also prohibits manipulative interface design (“dark patterns”) that would materially distort users’ ability to make free and informed choices. So, offering a non-profiling option but hiding it deep in settings can run counter to the spirit of compliance.
 
 #### 4.2.3 DSA Article 34 and 35 – Recommendations risks
 
-For VLOPs, recommender systems are also treated as part of how platforms manage system-wide risks. Under Article 34, VLOPs must find and evaluate major risks that come from how their service is designed or works, including their algorithms. The law specifically mentions that the design of recommender systems should be considered in this risk check.[[12]] Article 35 then requires that platforms adopt reasonable and proportionate mitigation measures based on the risks they identify.[[13]]
+For VLOPs, recommender systems are also treated as part of how platforms manage system-wide risks. Under Article 34, VLOPs must find and evaluate major risks that come from how their service is designed or works, including their algorithms. The law specifically mentions that the design of recommender systems should be considered in this risk check.[[12]](https://www.eu-digital-services-act.com/Digital_Services_Act_Article_34.html) Article 35 then requires that platforms adopt reasonable and proportionate mitigation measures based on the risks they identify.[[13]](https://www.eu-digital-services-act.com/Digital_Services_Act_Article_35.html)
 
 So, if a platform’s recommendations can increase exposure to harmful content, regulators can treat this not only as a product issue, but as part of systemic risk caused by the platform’s design choices.
 
 #### 4.2.4 Real-Life applications
 
-The DSA is already being enforced through formal information requests and investigations. For example, in October 2025, the European Commission requested information from YouTube (among other services) on measures related to the protection of minors, including how systems prevent exposure to harmful material.[[14]]
+The DSA is already being enforced through formal information requests and investigations. For example, in October 2025, the European Commission requested information from YouTube (among other services) on measures related to the protection of minors, including how systems prevent exposure to harmful material.[[14]](https://digital-strategy.ec.europa.eu/en/news/commission-scrutinises-safeguards-minors-snapchat-youtube-apple-app-store-and-google-play-under)
 
-Separately, the Commission has required platforms like **X** to provide internal documentation on recommender systems and recent changes to them as part of ongoing DSA proceedings.[[15]]
+Separately, the Commission has required platforms like **X** to provide internal documentation on recommender systems and recent changes to them as part of ongoing DSA proceedings.[[15]](https://digital-strategy.ec.europa.eu/en/news/commission-addresses-additional-investigatory-measures-x-ongoing-proceedings-under-digital-services)
 
 These actions illustrate the practical direction of regulation: platforms are expected to:
 
