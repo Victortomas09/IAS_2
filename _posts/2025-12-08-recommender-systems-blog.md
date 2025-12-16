@@ -641,7 +641,7 @@ YouTube claims these measures significantly reduced views of borderline content,
 
 ### 4.2 Regulation: The Digital Services Act (DSA) and Beyond
 
-The EU’s **Digital Services Act (DSA)** is the most relevant regulatory framework for recommender systems in large platforms because it treats recommendation not just as a “product feature”, but as part of the platform’s **societal impact and risk profile**. The DSA applies broadly to online intermediaries, but the strongest obligations apply to **Very Large Online Platforms (VLOP)** platforms with **at least 45 million average monthly active recipients in the EU**, designated by the European Commission.[[9]]
+The EU’s **Digital Services Act (DSA)** is the most relevant regulatory framework for recommender systems in large platforms because it treats recommendation not just as a “product feature”, but as part of the platform’s **societal impact and risk profile**. The DSA applies broadly to online intermediaries, but the strongest obligations apply to **Very Large Online Platforms (VLOP)** platforms with **at least 45 million average monthly active recipients in the EU**, designated by the European Commission.[[9]](https://www.eu-digital-services-act.com/Digital_Services_Act_Article_33.html)
 
 #### 4.2.1 DSA Article 27 – Recommender system transparency
 
