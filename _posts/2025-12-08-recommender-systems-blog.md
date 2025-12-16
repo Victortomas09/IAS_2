@@ -38,10 +38,6 @@ YouTube, in particular, has been labelled "the great radicalizer," a platform wh
 
 ### 1.2 The Core Question: Are Algorithms Driving Radicalization?
 
-At the heart of the debate lies a deceptively simple question: **do recommendation algorithms systematically direct users toward extreme, conspiratorial, or otherwise problematic content?**
-
-Answering this requires unpacking what we call the **loop effect**, a feedback cycle with four interacting components:
-
 #### Understanding the Loop Effect in Recommendation Algorithms
 
 At the center of current debates on digital media lies a central question: do recommendation algorithms actively steer users toward more extreme, conspiratorial, or otherwise harmful content?
