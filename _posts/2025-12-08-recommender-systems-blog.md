@@ -639,15 +639,43 @@ In response to mounting criticism, YouTube announced a **Four Rs policy framewor
 
 YouTube claims these measures significantly reduced views of borderline content, but independent verification is limited due to black-box constraints.
 
-### 4.2 Regulation: The Digital Services Act and Beyond
+### 4.2 Regulation: The Digital Services Act (DSA) and Beyond
 
-The European Union's **Digital Services Act** directly targets recommender systems. Key requirements include:
+The EU’s **Digital Services Act (DSA)** is the most relevant regulatory framework for recommender systems in large platforms because it treats recommendation not just as a “product feature”, but as part of the platform’s **societal impact and risk profile**. The DSA applies broadly to online intermediaries, but the strongest obligations apply to **Very Large Online Platforms (VLOP)** platforms with **at least 45 million average monthly active recipients in the EU**, designated by the European Commission.[[9]]
 
-- Platforms must describe the main parameters of their recommender systems in plain and intelligible language.
-- Very large online platforms must provide at least one non-profile-based recommendation option (e.g., chronological ordering).
-- Regulators receive stronger auditing and data access powers.
+#### 4.2.1 DSA Article 27 – Recommender system transparency
 
-The EU's **AI Act**, while not ultimately categorising recommenders as high-risk systems, further signals regulatory concern about opaque, large-scale algorithmic systems.
+Under **Article 27**, platforms that use recommender systems must explain, in plain and intelligible language, the main parameters driving recommendations and the options users have to modify or influence those parameters.[[10]] In practice, “main parameters” should not be a vague statement like “we personalize content”; it should help users understand what the system is optimizing and what signals matter.
+
+Examples of “main parameters” that are meaningful in a video platform context include:
+
+- **Objective signals**: e.g., watch time, completion rate, “satisfaction” proxies (likes/dislikes), session duration.
+- **Personalization signals**: e.g., watch history, search history, subscriptions, device/context signals.
+- **Ranking rules**: e.g., prioritizing “similar viewers also watched”, freshness, language/region, or topical similarity.
+- **Feedback controls** (user influence): e.g., “Not interested”, “Don’t recommend channel”, clearing watch history, turning off autoplay, topic filters (where available).
+
+#### 4.2.2 DSA Article 38 – Recommender systems
+
+For VLOPs (and very large search engines), the DSA goes further. Article 38 requires at least one option for each recommender system that is not based on profiling (as defined in the GDPR).[[11]] Also, providing a non-profiling option is not only a back-end requirement; it has a UX dimension. The DSA also prohibits manipulative interface design (“dark patterns”) that would materially distort users’ ability to make free and informed choices. So, offering a non-profiling option but hiding it deep in settings can run counter to the spirit of compliance.
+
+#### 4.2.3 DSA Article 34 and 35 – Recommendations risks
+
+For VLOPs, recommender systems are also treated as part of how platforms manage system-wide risks. Under Article 34, VLOPs must find and evaluate major risks that come from how their service is designed or works, including their algorithms. The law specifically mentions that the design of recommender systems should be considered in this risk check.[[12]] Article 35 then requires that platforms adopt reasonable and proportionate mitigation measures based on the risks they identify.[[13]]
+
+So, if a platform’s recommendations can increase exposure to harmful content, regulators can treat this not only as a product issue, but as part of systemic risk caused by the platform’s design choices.
+
+#### 4.2.4 Real-Life applications
+
+The DSA is already being enforced through formal information requests and investigations. For example, in October 2025, the European Commission requested information from YouTube (among other services) on measures related to the protection of minors, including how systems prevent exposure to harmful material.[[14]]
+
+Separately, the Commission has required platforms like **X** to provide internal documentation on recommender systems and recent changes to them as part of ongoing DSA proceedings.[[15]]
+
+These actions illustrate the practical direction of regulation: platforms are expected to:
+
+- demonstrate a rigorous, internal understanding of how their recommender system functions in practice;
+- translate that understanding into traceable, audit-ready documentation that captures design choices, parameters, and changes over time;
+- provide credible evidence that the system’s foreseeable harms are being actively identified, assessed, and mitigated through proportionate risk-controls tied directly to the recommender’s operation.
+
 
 ### 4.3 Challenging the Myth of Algorithmic Neutrality
 
@@ -725,8 +753,19 @@ Recommender systems will remain central to digital life. The question is not whe
 
 [8] Raza, S., et al. (2024). *A Comprehensive Review of Recommender Systems.* arXiv. Available at: [https://doi.org/10.48550/arXiv.2407.13699](https://doi.org/10.48550/arXiv.2407.13699)
 
+[9] Article 33, Very large online platforms and very large online search engines [https://www.eu-digital-services-act.com/Digital_Services_Act_Article_33.html]
 
+[10] Article 27, Recommender system transparency [https://www.eu-digital-services-act.com/Digital_Services_Act_Article_27.html]
 
+[11] Article 38, Recommender systems [https://www.eu-digital-services-act.com/Digital_Services_Act_Article_38.html]
+
+[12] Article 34, Risk assessment [https://www.eu-digital-services-act.com/Digital_Services_Act_Article_34.html]
+
+[13] Article 35, Mitigation of risks [https://www.eu-digital-services-act.com/Digital_Services_Act_Article_35.html]
+
+[14] Commission scrutinises safeguards for minors on Snapchat, YouTube, Apple App Store and Google Play under the Digital Services Act [https://digital-strategy.ec.europa.eu/en/news/commission-scrutinises-safeguards-minors-snapchat-youtube-apple-app-store-and-google-play-under]
+
+[15] Commission addresses additional investigatory measures to X in the ongoing proceedings under the Digital Services Act [https://digital-strategy.ec.europa.eu/en/news/commission-addresses-additional-investigatory-measures-x-ongoing-proceedings-under-digital-services]
 
 ---
 
