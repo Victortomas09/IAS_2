@@ -1,7 +1,9 @@
 title: "IAS Blog"
 description: "Master's blog on AI and society"
-theme: jekyll-theme-minimal  
+theme: jekyll-theme-minimal
 permalink: /:year/:month/:day/:title/
+
 markdown: kramdown
 kramdown:
   input: GFM
+  math_engine: mathjax
