@@ -35,7 +35,6 @@ from helpers.helpers_tab3_knn import plot_category_biased_knn_graph, plot_user_p
 
 # Optional: ALS
 try:
-    from implicit.als import AlternatingLeastSquares
     import scipy.sparse as sp
     ALS_AVAILABLE = True
 except:
